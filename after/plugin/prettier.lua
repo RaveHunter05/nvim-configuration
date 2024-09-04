@@ -5,6 +5,12 @@ local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
 null_ls.setup({
+  cli_options = {
+    print_width = 150,
+    single_quote = true,
+    semi = false,
+    tab_width = 4,
+  },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.keymap.set("n", "<leader>f", function()
