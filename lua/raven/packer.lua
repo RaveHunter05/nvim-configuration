@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
 			require("telescope").load_extension("live_grep_args")
 		end
 	}
+
 	use({
 		'rose-pine/neovim',
 		as = 'rose-pine',
@@ -25,6 +26,9 @@ return require('packer').startup(function(use)
 	})
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use ('nvim-treesitter/playground')
+
+	-- jdtls
+	use('mfussenegger/nvim-jdtls')
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -48,15 +52,6 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'}, -- Optional
 		}
 	}
-
-
-	use({
-		"giusgad/pets.nvim",
-		requires = {
-			"edluffy/hologram.nvim",
-			"MunifTanjim/nui.nvim",
-		}
-	})
 
 	use('neovim/nvim-lspconfig')
 	use('jose-elias-alvarez/null-ls.nvim')

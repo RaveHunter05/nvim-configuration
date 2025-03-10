@@ -5,15 +5,9 @@ local event = "BufWritePre" -- or "BufWritePost"
 local async = event == "BufWritePost"
 
 null_ls.setup({
-  cli_options = {
-    print_width = 150,
-    single_quote = true,
-    semi = false,
-    tab_width = 4,
-  },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<leader>f", function()
+      vim.keymap.set("n", "<Leader>f", function()
         vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
       end, { buffer = bufnr, desc = "[lsp] format" })
 
@@ -30,7 +24,7 @@ null_ls.setup({
     end
 
     if client.supports_method("textDocument/rangeFormatting") then
-      vim.keymap.set("x", "<leader>f", function()
+      vim.keymap.set("x", "<Leader>f", function()
         vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
       end, { buffer = bufnr, desc = "[lsp] format" })
     end
