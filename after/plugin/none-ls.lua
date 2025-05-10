@@ -5,6 +5,9 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.checkstyle,
+		null_ls.builtins.formatting.lemminx,
+		null_ls.builtins.formatting.json_tool,
+		null_ls.builtins.formatting.csharpier,
 	},
 })
 
