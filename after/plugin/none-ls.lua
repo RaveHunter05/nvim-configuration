@@ -4,11 +4,17 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.checkstyle,
-		null_ls.builtins.formatting.lemminx,
-		null_ls.builtins.formatting.json_tool,
 		null_ls.builtins.formatting.csharpier,
+		null_ls.builtins.formatting.google_java_format,
 	},
 })
 
-vim.keymap.set("n", "gf", vim.lsp.buf.format, {})
+-- Formatear solo con null-ls (evita conflictos con los LSPs)
+vim.keymap.set("n", "gf", function()
+	vim.lsp.buf.format({
+		async = true,
+		filter = function(client)
+			return client.name == "null-ls"
+		end,
+	})
+end, { desc = "Format with null-ls" })
